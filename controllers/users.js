@@ -33,7 +33,7 @@ const login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        process.env.NODE_ENV === 'production' ? process.env.JWT_SECRET : 'some-secret-key',
+        process.env.NODE_ENV === 'production' ? process.env.JWT_SECRET : 'some-dev-secret-key',
         { expiresIn: '7d' },
       );
       res.status(201).cookie('jwt', token, {
